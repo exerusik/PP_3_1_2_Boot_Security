@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thimeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>all Users</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Lastname</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getUsername()}"></td>
+        <td th:text="${user.getLastname()}"></td>
+        <td th:text="${user.getAge()}"></td>
+        <td>
+            <form th:method="POST" th:action="@{/admin/delete?id={id}(id=${user.getId()})}">
+                <input name="delete" type="submit" value="Delete"/>
+            </form>
+        </td>
+
+        <td>
+            <form method="post" th:action="@{/admin/edit?id={id}(id=${user.getId()})}">
+                <input name="edit" type="submit" value="Edit"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<td>
+    <form method="get" th:action="@{/admin/new}">
+        <input name="newUser" type="submit" value="create New User"/>
+    </form>
+    <br>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Logout" />
+    </form>
+</td>
+</body>
+</html>
