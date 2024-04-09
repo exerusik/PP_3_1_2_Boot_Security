@@ -1,6 +1,8 @@
 package ru.kata.spring.boot_security.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +47,9 @@ public class UserController {
 
     @PostMapping("/admin/new")
     public String saveUser(@ModelAttribute User user) {
-        userService.saveUser(new User(user.getUsername(), user.getLastname(), user.getAge()));
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String codedPassword = passwordEncoder.encode(user.getPassword());
+        userService.saveUser(new User(user.getUsername(), user.getLastname(), user.getAge(),codedPassword, user.getRoles()));
         return "redirect:/admin/showAll";
     }
 
