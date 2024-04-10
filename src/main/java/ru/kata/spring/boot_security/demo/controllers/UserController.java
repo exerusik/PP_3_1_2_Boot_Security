@@ -63,11 +63,14 @@ public class UserController {
     public String showFormForEdit(@RequestParam(name = "id") long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute(user);
+        List<Role> roles = roleRepository.findAll();
+        model.addAttribute("roles", roles);
         return "editUser";
     }
 
     @PostMapping("/admin/userEdit")
     public String editUser(@ModelAttribute User user) {
+
         userService.editUser(user);
 
         return "redirect:/admin/showAll";
