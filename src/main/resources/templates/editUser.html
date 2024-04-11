@@ -17,8 +17,7 @@
     <input type="text" th:field="*{age}" id="age"/>
     <br>
     <label for="password">Password: </label>
-    <input type="text" th:field="*{password}" id="password">
-    <input name="Edit" type="submit" value="Edit">
+    <input name="password" type="text"  id="password">
     <br>
     <label>Roles:
         <input type="checkbox" name="roles"
@@ -28,6 +27,8 @@
                th:field="*{roles}"
         />
     </label>
+    <br>
+    <input name="Edit" type="submit" value="Edit">
 </form>
 </body>
 </html>

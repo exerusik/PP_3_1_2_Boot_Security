@@ -16,7 +16,7 @@ public class User {
 
     private int age;
     private String password;
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -29,7 +29,7 @@ public class User {
         this.username = username;
         this.lastname = lastname;
         this.age = age;
-        this.password=password;
+        this.password = password;
         this.roles = roles;
     }
 

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
-import ru.kata.spring.boot_security.demo.userDao.RoleRepository;
-import ru.kata.spring.boot_security.demo.userService.UserServiceImpl;
+import ru.kata.spring.boot_security.demo.userService.RoleService;
+import ru.kata.spring.boot_security.demo.userService.UserService;
 
 import java.security.Principal;
 import java.util.Collections;
@@ -20,13 +20,13 @@ import java.util.List;
 
 @Controller
 public class UserController {
-    private final UserServiceImpl userService;
-    private final RoleRepository roleRepository;
+    private final UserService userService;
+    private final RoleService roleService;
 
     @Autowired
-    public UserController(UserServiceImpl userService, RoleRepository roleRepository) {
+    public UserController(UserService userService, RoleService roleService) {
         this.userService = userService;
-        this.roleRepository = roleRepository;
+        this.roleService = roleService;
     }
 
 
@@ -40,7 +40,7 @@ public class UserController {
     @GetMapping("/admin/new")
     public String showFormForSave(Model model) {
         model.addAttribute("user", new User());
-        List<Role> roles = roleRepository.findAll();
+        List<Role> roles = roleService.getRoles();
         model.addAttribute("roles", roles);
         return "newUser";
     }
@@ -49,7 +49,7 @@ public class UserController {
     public String saveUser(@ModelAttribute User user) {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String codedPassword = passwordEncoder.encode(user.getPassword());
-        userService.saveUser(new User(user.getUsername(), user.getLastname(), user.getAge(),codedPassword, user.getRoles()));
+        userService.saveUser(new User(user.getUsername(), user.getLastname(), user.getAge(), codedPassword, user.getRoles()));
         return "redirect:/admin/showAll";
     }
 
@@ -63,7 +63,7 @@ public class UserController {
     public String showFormForEdit(@RequestParam(name = "id") long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute(user);
-        List<Role> roles = roleRepository.findAll();
+        List<Role> roles = roleService.getRoles();
         model.addAttribute("roles", roles);
         return "editUser";
     }
