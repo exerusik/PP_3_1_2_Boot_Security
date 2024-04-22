@@ -20,7 +20,7 @@ public class AddModels {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String passwordForAdmin = bCryptPasswordEncoder.encode("admin");
         String passwordForUser = bCryptPasswordEncoder.encode("user");
-        userService.saveUser(new User("admin", "admin", 55, passwordForAdmin, List.of(new Role("ROLE_ADMIN"))));
-        userService.saveUser(new User("user", "user", 55, passwordForUser, List.of(new Role("ROLE_USER"))));
+        userService.saveUser(new User("admin", "admin", 55, "admin@mail.com", passwordForAdmin, List.of(new Role("ROLE_ADMIN"))));
+        userService.saveUser(new User("user", "user", 55, "user@mail.com", passwordForUser, List.of(new Role("ROLE_USER"))));
     }
 }

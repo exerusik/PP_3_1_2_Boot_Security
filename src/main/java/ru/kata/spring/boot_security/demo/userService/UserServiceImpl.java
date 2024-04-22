@@ -48,9 +48,12 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Transactional
     public void editUser(User user) {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        String encode = bCryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(encode);
+        User user1 = userRepository.findById(user.getId()).stream().findAny().orElse(null);
+        if (!user.getPassword().equals(user1.getPassword())) {
+            BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+            String encode = bCryptPasswordEncoder.encode(user.getPassword());
+            user.setPassword(encode);
+        }
         userRepository.save(user);
 
     }
