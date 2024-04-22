@@ -30,7 +30,7 @@ public class AdminController {
     }
 
 
-    @GetMapping("/admin/showAll")
+    @GetMapping("/admin")
     public String showAll(Model model, Principal principal) {
         List<User> users = userService.getAll();
         User authUser = userService.findUserByUsername(principal.getName());
@@ -47,13 +47,13 @@ public class AdminController {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String codedPassword = passwordEncoder.encode(user.getPassword());
         userService.saveUser(new User(user.getUsername(), user.getLastname(), user.getAge(), user.getEmail(), codedPassword, user.getRoles()));
-        return "redirect:/admin/showAll";
+        return "redirect:/admin";
     }
 
     @PostMapping("/admin/delete")
     public String delete(@RequestParam(name = "id") long id) {
         userService.deleteUserById(id);
-        return "redirect:/admin/showAll";
+        return "redirect:/admin";
     }
 
 
@@ -61,6 +61,6 @@ public class AdminController {
     public String editUser(@ModelAttribute User user) {
         userService.editUser(user);
 
-        return "redirect:/admin/showAll";
+        return "redirect:/admin";
     }
 }

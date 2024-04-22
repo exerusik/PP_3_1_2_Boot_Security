@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Spring Security Example</title>
+    <title>User page</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
 
         <div th:each="role : ${roles}"
              th:if="${role.getRole().equals('ROLE_ADMIN')}">
-            <a href="/admin/showAll" class="list-group-item active waves-effect">
+            <a href="/admin" class="list-group-item active waves-effect">
                 <i class="fa fa-pie-chart mr-3"></i>Admin
             </a>
         </div>
@@ -37,11 +37,10 @@
 
     </div>
 </div>
+<h1>Info about current authenticated User</h1>
 
 <div class="tab-content " id="myTabContent">
     <div class="tab-pane fade show active" id="userTable" role="tabpanel" aria-labelledby="home-tab">
-
-        <h1>Info about current authenticated User</h1>
 
 
         <table class="table">
