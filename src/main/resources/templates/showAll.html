@@ -91,11 +91,14 @@
                     </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" th:data-target="'#delete' + ${user.getId()}">Delete</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                            th:data-target="'#delete' + ${user.getId()}">Delete
+                    </button>
                 </td>
 
                 <!-- Modal Window For Delete -->
-                <div class="modal fade " th:id="'delete' + ${user.getId()}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+                <div class="modal fade " th:id="'delete' + ${user.getId()}" tabindex="-1" role="dialog"
+                     aria-labelledby="delete" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -105,20 +108,20 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                            <span th:text="'Are you sure you want to delete the user with ID :'"></span>
+                                <span th:text="'Are you sure you want to delete the user with ID :'"></span>
                                 <span th:text="${user.getId()}"></span>
-                                    <form  th:method="POST" th:action="@{/admin/delete?id={id}(id=${user.getId()})}">
+                                <form th:method="POST" th:action="@{/admin/delete?id={id}(id=${user.getId()})}">
 
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                                </button>
-                                <input class="btn btn-danger" name="Delete" type="submit" value="Delete"/>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <input class="btn btn-danger" name="Delete" type="submit" value="Delete"/>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
-                </div>
                 </div>
 
 
