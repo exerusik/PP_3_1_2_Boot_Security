@@ -5,16 +5,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
-import ru.kata.spring.boot_security.demo.userService.UserServiceImpl;
+import ru.kata.spring.boot_security.demo.userService.UserService;
 
 import java.util.List;
 
 @Configuration
 public class AddModels {
-    private final UserServiceImpl userService;
+    @Autowired
+    private final UserService userService;
 
     @Autowired
-    public AddModels(UserServiceImpl userService) {
+    public AddModels(UserService userService) {
         this.userService = userService;
     }
 
