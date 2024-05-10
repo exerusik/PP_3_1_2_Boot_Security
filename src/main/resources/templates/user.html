@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
->
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -9,11 +8,8 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <div>
-        <span class="text-white bg-dark font-weight-bold" th:text="${user.getEmail()} + ' '"></span>
-        <span class="text-white bg-dark" th:text="'with roles: '"></span>
-        <span class="text-white bg-dark" th:each="role : ${roles}"
-              th:text="${role.getRole()} + ' '"></span>
+    <div id="authUser">
+        <script src="/js/navbar.js"></script>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
@@ -25,11 +21,8 @@
 <div class="sidebar-fixed position-fixed">
     <div class="list-group list-group-flush">
 
-        <div th:each="role : ${roles}"
-             th:if="${role.getRole().equals('ROLE_ADMIN')}">
-            <a href="/admin" class="list-group-item active waves-effect">
-                <i class="fa fa-pie-chart mr-3"></i>Admin
-            </a>
+        <div id="isAdmin">
+            <script src="/js/isAdmin.js"></script>
         </div>
         <a href="/user" class="list-group-item waves-effect">
             <i class="fa fa-user mr-3"></i>User
@@ -37,7 +30,8 @@
 
     </div>
 </div>
-<h1>Info about current authenticated User</h1>
+
+<h1 id="head">Info about current authenticated User</h1>
 
 <div class="tab-content " id="myTabContent">
     <div class="tab-pane fade show active" id="userTable" role="tabpanel" aria-labelledby="home-tab">
@@ -55,22 +49,25 @@
                 <th>Role</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td th:text="${user.getId()}"></td>
-                <td th:text="${user.getUsername()}"></td>
-                <td th:text="${user.getLastname()}"></td>
-                <td th:text="${user.getAge()}"></td>
-                <td th:text="${user.getEmail()}"></td>
-                <td>
-            <span th:each="role : ${user.getRoles()}"
-                  th:text="${role.getRole()} + ' '"></span>
-                </td>
-            </tr>
+            <tbody id="currentUserTable">
 
             </tbody>
         </table>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="/js/currentUser.js">
+</script>
+
+
 </body>
 </html>

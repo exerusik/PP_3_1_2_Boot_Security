@@ -86,11 +86,11 @@
                 </td>
                 <!-- Button trigger modal -->
                 <td>
+                </td>
+                <td>
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                             th:data-target="'#exampleModal' + ${user.getId()}">Edit
                     </button>
-                </td>
-                <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal"
                             th:data-target="'#delete' + ${user.getId()}">Delete
                     </button>
@@ -110,7 +110,7 @@
                             <div class="modal-body">
                                 <span th:text="'Are you sure you want to delete the user with ID :'"></span>
                                 <span th:text="${user.getId()}"></span>
-                                <form th:method="POST" th:action="@{/admin/delete?id={id}(id=${user.getId()})}">
+                                <form th:method="DELETE" th:action="@{/admin?id={id}(id=${user.getId()})}">
 
 
                                     <div class="modal-footer">
@@ -138,7 +138,7 @@
                             </div>
                             <div class="modal-body">
 
-                                <form th:method="post" th:action="@{/admin/userEdit}" th:object="${user}">
+                                <form th:method="PUT" th:action="@{/admin}" th:object="${user}">
                                     <div class="row justify-content-center">
                                         <div class="from-group">
                                             <label for="id">ID</label>
@@ -188,8 +188,8 @@
                                     </div>
                                     <div class="row justify-content-center">
                                         <div class="form-group col-6">
-                                            <label for="exampleFormControlSelect0">Roles</label>
-                                            <select class="form-control" name="roles" id="exampleFormControlSelect0">
+                                            <label for="rolesForEdit">Roles</label>
+                                            <select class="form-control" name="roles" id="rolesForEdit">
 
                                                 <option class="form-control" th:each="role : ${roles}"
                                                         th:text="${role.getRole()}"
@@ -218,7 +218,7 @@
     </div>
     <div class="tab-pane  justify-content-center" id="newUser" role="tabpanel" aria-labelledby="profile-tab">
 
-        <form th:action="@{/admin/new}" method="post">
+        <form th:action="@{/admin}" method="POST">
 
             <div class="row justify-content-center">
                 <div class="from-group ">
@@ -251,8 +251,8 @@
             </div>
             <div class="row justify-content-center">
                 <div class="from-group-6">
-                    <label for="exampleFormControlSelect1">Roles</label>
-                    <select class="form-control" name="roles" id="exampleFormControlSelect1">
+                    <label for="rolesForNew">Roles</label>
+                    <select class="form-control" name="roles" id="rolesForNew">
 
                         <option th:each="role : ${roles}"
                                 th:text="${role.getRole()}"
@@ -280,5 +280,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+
 </body>
 </html>

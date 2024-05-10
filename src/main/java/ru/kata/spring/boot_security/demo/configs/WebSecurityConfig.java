@@ -22,6 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.passwordEncoder = passwordEncoder;
     }
 
+
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
