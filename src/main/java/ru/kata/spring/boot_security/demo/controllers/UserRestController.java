@@ -1,10 +1,9 @@
 package ru.kata.spring.boot_security.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.userService.RoleService;
 import ru.kata.spring.boot_security.demo.userService.UserService;
@@ -25,11 +24,13 @@ public class UserRestController {
     }
 
     @GetMapping()
-    public User showUser(Principal principal) {
+    public User showAuthUser(Principal principal) {
         return userService.findUserByUsername(principal.getName());
-//        model.addAttribute("user", user);
-//        List<Role> roles = user.getRoles();
-//        model.addAttribute("roles", roles);
-//        return "user";
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public User getUser(@PathVariable(name = "id") long id) {
+        return userService.getUserById(id);
     }
 }

@@ -22,9 +22,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.passwordEncoder = passwordEncoder;
     }
 
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests().antMatchers("/**").hasRole("ADMIN")
+//                .antMatchers("/**")
+//                .permitAll().anyRequest().authenticated()
+//                .and().formLogin().permitAll().and()
+//                .logout().permitAll().and().httpBasic();
+//        http.cors().disable().csrf().disable();
+//    }
 
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user").hasAnyRole("USER", "ADMIN")

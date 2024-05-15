@@ -29,7 +29,7 @@ public class AdminRestController {
 //        List<Role> roles = roleService.getRoles();
 //        model.addAttribute("roles", roles);
 //        model.addAttribute("authUser", authUser);
-//        model.addAttribute("users", users);
+//        model.addAttribute("users.js", users.js);
 //        return "showAll";
     }
 
