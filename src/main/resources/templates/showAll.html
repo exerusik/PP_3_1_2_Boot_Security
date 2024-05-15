@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thimeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,10 +16,6 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div id="authUser">
             <script src="/js/navbar.js"></script>
-<!--            <span class="text-white bg-dark font-weight-bold" th:text="${authUser.getEmail()} + ' '"></span>-->
-<!--            <span class="text-white bg-dark" th:text="'with roles: '"></span>-->
-<!--            <span class="text-white bg-dark" th:each="role : ${authUser.getRoles()}"-->
-<!--                  th:text="${role.getRole()} + ' '"></span>-->
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
@@ -75,59 +71,6 @@
 
             <tbody id="users">
             <script src="/js/users.js"></script>
-<!--            <tr th:each="user : ${users.js}">-->
-
-<!--                <td th:text="${user.getId()}"></td>-->
-<!--                <td th:text="${user.getUsername()}"></td>-->
-<!--                <td th:text="${user.getLastname()}"></td>-->
-<!--                <td th:text="${user.getAge()}"></td>-->
-<!--                <td th:text="${user.getEmail()}"></td>-->
-<!--                <td>-->
-<!--            <span th:each="role : ${user.getRoles()}"-->
-<!--                  th:text="${role.getRole()} + ' '"></span>-->
-
-<!--                </td>-->
-<!--                 Button trigger modal-->
-<!--                <td>-->
-<!--                    <button id="edit" type="button" class="btn btn-primary" data-toggle="modal"-->
-<!--                            data-target="'#exampleModal'">Edit-->
-<!--                    </button>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <button type="button" class="btn btn-danger" data-toggle="modal"-->
-<!--                            th:data-target="'#delete'">Delete-->
-<!--                    </button>-->
-<!--                </td>-->
-
-                <!-- Modal Window For Delete -->
-<!--                <div class="modal fade " th:id="'delete' + ${user.getId()}" tabindex="-1" role="dialog"-->
-<!--                     aria-labelledby="delete" aria-hidden="true">-->
-<!--                    <div class="modal-dialog modal-lg" role="document">-->
-<!--                        <div class="modal-content">-->
-<!--                            <div class="modal-header">-->
-<!--                                <h5 class="modal-title" id="delete">Delete Window</h5>-->
-<!--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                                    <span aria-hidden="true">&times;</span>-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                            <div class="modal-body">-->
-<!--                                <span th:text="'Are you sure you want to delete the user with ID :'"></span>-->
-<!--                                <span th:text="${user.getId()}"></span>-->
-<!--                                <form th:method="DELETE" th:action="@{/admin?id={id}(id=${user.getId()})}">-->
-
-
-<!--                                    <div class="modal-footer">-->
-<!--                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close-->
-<!--                                        </button>-->
-<!--                                        <input class="btn btn-danger" name="Delete" type="submit" value="Delete"/>-->
-<!--                                    </div>-->
-<!--                                </form>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-            </tr>
             </tbody>
         </table>
 
@@ -145,7 +88,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <form  id="editUserForm">
+                        <form id="editUserForm">
                             <div class="row justify-content-center">
                                 <div class="from-group">
                                     <label for="id">ID</label>
@@ -205,13 +148,13 @@
                             <div class="text-right">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                                 </button>
-                                <button id="edit" class="btn btn-primary" name="Edit" >Edit changes</button>
+                                <button id="edit" class="btn btn-primary" name="Edit">Edit changes</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
 
     <div class="tab-pane  justify-content-center" id="newUser" role="tabpanel" aria-labelledby="profile-tab">
@@ -266,7 +209,6 @@
 </div>
 
 
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -277,7 +219,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <script src="/js/createUser.js"></script>
+<script src="/js/createUser.js"></script>
 
 
 </body>
