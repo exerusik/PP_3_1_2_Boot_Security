@@ -2,14 +2,18 @@ document.getElementById("createUser").addEventListener("submit", function(event)
     event.preventDefault();
 
     let roles = [];
-    for (let i = 0; i < this.rolesForNew.options.length; i++) {
-        if (this.rolesForNew.options[i].selected) {
-            roles.push({
-                id: 0,
-                role: this.rolesForNew.options[i].value
-            });
+     for (let i = 0; i < this.rolesForNew.options.length; i++) {
+            if (this.rolesForNew.options[i].selected) {
+                let selectedRoles = this.rolesForNew.options[i].value.split(', ');
+                selectedRoles.forEach((role) => {
+                    roles.push({
+                        id: 0,
+                        role: role
+                    });
+                });
+            }
         }
-    }
+                console.log(roles);
 
     const userData = {
         username: this.inputusername.value,

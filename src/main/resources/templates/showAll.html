@@ -27,11 +27,12 @@
 
     <div class="sidebar-fixed position-fixed">
         <div class="list-group list-group-flush">
-            <a href="/admin" class="list-group-item active waves-effect">
+            <a href="/admin" class="list-group-item active" aria-disabled="true">
                 <i class="fa fa-pie-chart mr-3"></i>Admin
             </a>
         </div>
-        <a href="/user" class="list-group-item waves-effect">
+        <div>
+        <a href="/user" class="list-group-item waves-effect" >
             <i class="fa fa-user mr-3"></i>User
         </a>
     </div>
@@ -141,6 +142,8 @@
 
                                         <option id="1" value="ROLE_USER">USER</option>
                                         <option id="2" value="ROLE_ADMIN">ADMIN</option>
+                                        <option id="3" value="ROLE_ADMIN, ROLE_USER">ADMIN and USER</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -197,6 +200,7 @@
 
                         <option value="ROLE_USER">USER</option>
                         <option value="ROLE_ADMIN">ADMIN</option>
+                        <option value="ROLE_ADMIN, ROLE_USER">ADMIN and USER</option>
                     </select>
                 </div>
             </div>

@@ -27,8 +27,8 @@ function fillTable(data) {
             <td>${user.age}</td>
             <td>${user.email}</td>
             <td>${user.roles.map(role => role.role).join(', ')}</td>
-            <td><button class="btn-danger deleteButton" data-user-id=${user.id}>Delete</button></td>
             <td><button class="btn btn-primary editButton" data-user-id=${user.id}>Edit</button></td>
+            <td><button class="btn-danger deleteButton" data-user-id=${user.id}>Delete</button></td>
         `;
         tableBody.appendChild(row);
     });
@@ -55,21 +55,32 @@ function fillTable(data) {
 document.getElementById('editUserForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    let roles = [];
+   let roles = [];
    for (let i = 0; i < this.rolesForEdit.options.length; i++) {
        if (this.rolesForEdit.options[i].selected) {
-           let roleId;
-           if (this.rolesForEdit.options[i].value === "ROLE_ADMIN") {
-               roleId = 1;
+           if (this.rolesForEdit.options[i].value === "ROLE_ADMIN, ROLE_USER") {
+               let selectedRoles = this.rolesForEdit.options[i].value.split(', ');
+               selectedRoles.forEach((role, index) => {
+                   roles.push({
+                       id: index + 1,
+                       role: role
+                   });
+               });
            } else {
-               roleId = 2;
+               let roleId;
+               if (this.rolesForEdit.options[i].value === "ROLE_ADMIN") {
+                   roleId = 1;
+               } else {
+                   roleId = 2;
+               }
+               roles.push({
+                   id: roleId,
+                   role: this.rolesForEdit.options[i].value
+               });
            }
-           roles.push({
-               id: roleId,
-               role: this.rolesForEdit.options[i].value
-           });
        }
    }
+
 
 
     const id = document.getElementById('id').value;

@@ -9,7 +9,7 @@ function isAdmin() {
 			const auth = document.getElementById("isAdmin");
 			if(data.roles.some(role => role.role === "ROLE_ADMIN")) {
 			auth.innerHTML = `
-			               <a href="/admin" class="list-group-item active waves-effect">
+			               <a href="/admin" class="list-group-item waves-effect">
                                     <i class="fa fa-pie-chart mr-3"></i>Admin
                                 </a>
 			            `;
